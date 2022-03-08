@@ -1,0 +1,96 @@
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <form (ngSubmit)="onSubmitForm(f)" #f="ngForm">
+                <div *ngIf="!userData.valid && userData.touched">User Data is invalid</div>
+                <div ngModelGroup="userData" #userData="ngModelGroup">
+                <div class="form-group">
+                    <label for="firstname">First Name<span class="text-danger">*</span></label>
+                    <input type="text" class="form-control" id="firstname" name="firstname" ngModel required minlength="2" maxlength="10" pattern="^[a-zA-Z]+$" #firstname="ngModel">
+                    <span *ngIf="!firstname.valid && firstname.touched || firstname.dirty">
+                        <small *ngIf="firstname.errors && firstname.errors?.['required']" class="info-msg text-danger">Please enter your first name</small>
+                          <small *ngIf="firstname.errors?.['minlength']" class="info-msg text-danger">
+                            First Name should have atleast 2 characters
+                          </small>
+                          <small *ngIf="firstname.errors?.['maxlength']">
+                            First Name can have atmax 15 characters
+                          </small>
+                          <small *ngIf="firstname.errors?.['pattern']" class="info-msg text-danger">
+                              First Name can only have characters from a to z.
+                          </small>
+                    </span>
+                </div>
+                <div class="form-group">
+                    <label for="lastname">Last Name<span class="text-danger">*</span></label>
+                    <input type="text" class="form-control" id="lastname" name="lastname" ngModel required minlength="2" maxlength="10" pattern="^[a-zA-Z]+$" #lastname="ngModel"/>
+                    <span *ngIf="!lastname.valid && lastname.touched || lastname.dirty">
+                        <small *ngIf="lastname.errors && lastname.errors?.['required']" class="info-msg text-danger">Please enter your last name</small>
+                          <small *ngIf="lastname.errors?.['minlength']" class="info-msg text-danger">
+                            Last Name should have atleast 2 characters
+                          </small>
+                          <small *ngIf="lastname.errors?.['maxlength']">
+                            Last Name can have atmax 15 characters
+                          </small>
+                          <small *ngIf="lastname.errors?.['pattern']" class="info-msg text-danger">
+                            Last Name can only have characters from a to z.
+                        </small>
+                    </span>
+                </div>
+                <div class="form-group">
+                    <label for="firstname">Address<span class="text-danger">*</span></label>
+                    <input type="text" class="form-control" id="address" name="address" ngModel required minlength="2" maxlength="10" pattern="^[a-zA-Z]+$" #address="ngModel"/>
+                    <span *ngIf="!address.valid && address.touched || address.dirty">
+                        <small *ngIf="address.errors && address.errors?.['required']" class="info-msg text-danger">Please enter your address</small>
+                          <small *ngIf="address.errors?.['minlength']" class="info-msg text-danger">
+                            Address should have atleast 2 characters
+                          </small>
+                          <small *ngIf="address.errors?.['maxlength']">
+                            Address can have atmax 15 characters
+                          </small>
+                          <small *ngIf="address.errors?.['pattern']" class="info-msg text-danger">
+                            Address can only have characters from a to z.
+                        </small>
+                    </span>
+                </div>
+                <div class="form-group">
+                    <label for="firstname">E-Mail<span class="text-danger">*</span></label>
+                    <input type="email" class="form-control" id="email" name="email" ngModel required email minlength="11" maxlength="20" #email="ngModel"/>
+                    <span *ngIf="!email.valid && email.touched || email.dirty">
+                        <small *ngIf="email.errors && email.errors?.['required']" class="info-msg text-danger">Please enter your e-mail</small>
+                          <small *ngIf="email.errors?.['minlength']" class="info-msg text-danger">
+                            Email should have atleast 11 characters
+                          </small>
+                    </span>
+                </div>
+                <div class="form-group">
+                    <label for="firstname">Password<span class="text-danger">*</span></label>
+                    <input type="password" class="form-control" id="password" name="password" ngModel required minlength="6" maxlength="15" #password="ngModel"/>
+                    <span *ngIf="!password.valid && password.touched || password.dirty">
+                        <small *ngIf="password.errors && password.errors?.['required']" class="info-msg text-danger">Please enter your password</small>
+                          <small *ngIf="password.errors?.['minlength']" class="info-msg text-danger">
+                            Password should have atleast 6 characters
+                          </small>
+                          <small *ngIf="password.errors?.['maxlength']">
+                            Password can have atmax 15 characters
+                          </small>
+                    </span>
+                </div>
+                <div class="mt-2">
+                    <button type="submit" class="btn btn-primary" [disabled]="!f.valid">Submit</button>
+                </div>
+                </div>
+            </form>
+        </div>
+
+        <div>
+            <h3>Your Data is:</h3>
+            <div>
+                First Name: {{user.firstname}}<br>
+                Last Name: {{user.lastname}}<br>
+                Address: {{user.address}}<br>
+                E-mail: {{user.email}}<br>
+                Password: {{user.password}}
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,67 @@
+<div class="container mt-5">
+    <div class="row">
+      <div class="col-sm-12">
+        <form [formGroup]="userForm">
+          <div class="row">
+            <div class="col-sm-12">
+              <div class="form-group">
+                <label>Full Name<span class="text-danger">*</span></label>
+                <input type="text" formControlName="name" name="Name" class="form-control" placeholder="First Name" readonly/>
+              </div>
+            </div>
+          </div>
+  
+          <div class="row">
+            <div class="col-sm-12">
+              <div class="form-group">
+                <label>E-mail<span class="text-danger">*</span></label>
+                <input type="email" formControlName="email" name="email" class="form-control" placeholder="E-mail" readonly />
+              </div>
+            </div>
+          </div>
+  
+          <div class="row">
+            <div class="col-sm-12">
+              <div class="form-group">
+                <label>Address<span class="text-danger">*</span></label>
+                <input type="text" formControlName="address" class="form-control" placeholder="Address" readonly/>
+              </div>
+            </div>
+          </div>
+  
+          <div class="row">
+            <div class="col-sm-12">
+              <div class="form-group">
+                <ng-container formArrayName="contacts"  *ngFor="let data of getContactForm?.controls; let i = index">
+                  <div class="row mb-3" [formGroupName]="i">
+                    <div class="col-sm-6">
+                      <div class="form-group">
+                        <label>Contact Number: <span class="text-danger">*</span> </label>
+                        <input type="text" name="mobileNumber" id="mobileNumber" formControlName="mobileNumber" placeholder="Mobile Number" class="form-control" readonly/>
+                      </div>
+                    </div>
+        
+                    <div class="col-sm-6">
+                      <div class="form-group">
+                        <label>Contact Email: <span class="text-danger">*</span> </label>
+                        <input type="text" name="email" id="email" formControlName="email" placeholder="Contact Email" class="form-control" readonly />
+                      </div>
+                    </div>
+                    
+                  </div>
+                </ng-container>
+              </div>
+            </div>
+          </div>
+
+  
+          <div class="row">
+            <div class="col-sm-12">
+              <button class="btn btn-primary" (click)="onBack()">Back</button>
+            </div>
+          </div>
+  
+        </form>
+      </div>
+    </div>
+  </div>

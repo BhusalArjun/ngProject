@@ -1,0 +1,25 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-primary">
+    <a class="navbar-brand" href="#" routerLink="/home" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true}">AngularDemo</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+  
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item">
+          <a class="nav-link" href="javascript:void(0);" routerLink="home/table" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true}"><i class="fa fa-table" aria-hidden="true"></i>Table</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="javascript:void(0);" routerLink="home/reactive-form" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true}">Reactive Form</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="javascript:void(0);" routerLink="home/template-form" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true}">Template Form</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="javascript:void(0);" routerLink="home/users" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true}"><i class="fa fa-users" aria-hidden="true"></i>Users</a>
+        </li>
+      </ul>
+    </div>
+  </nav>
+  
+  <router-outlet></router-outlet>

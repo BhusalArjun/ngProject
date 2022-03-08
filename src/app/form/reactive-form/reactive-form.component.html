@@ -1,0 +1,111 @@
+<div class="container mt-5">
+  <div class="row">
+      <div class="col-sm-12">
+          <form [formGroup]="reactiveForm">
+              <div class="row">
+                  <div class="col-sm-12">
+                      <div class="form-group">
+                          <label>First Name<span class="text-danger">*</span></label>
+                          <input type="text" formControlName="firstname" name="firstName" class="form-control" placeholder="First Name"/>
+                          <span *ngIf="submitted || forms['firstname'].invalid && forms['firstname'].dirty || forms['firstname'].touched" class="info-msg text-danger">
+                            <small *ngIf="forms['firstname'].errors && forms['firstname'].errors?.['required']">
+                              First Name is required
+                            </small>
+                            <small *ngIf="forms['firstname'].errors?.['minlength']">
+                              First Name should have atleast 2 characters
+                            </small>
+                            <small *ngIf="forms['firstname'].errors?.['maxlength']">
+                              First Name can have atmax 15 characters
+                            </small>
+                        </span>
+                      </div>
+                  </div>
+              </div>
+
+              <div class="row">
+                <div class="col-sm-12">
+                    <div class="form-group">
+                        <label>Last Name<span class="text-danger">*</span></label>
+                        <input type="text" formControlName="lastname" name="lastName" class="form-control" placeholder="Last Name" />
+                        <span *ngIf="submitted || forms['lastname'].invalid && forms['lastname'].dirty || forms['lastname'].touched" class="info-msg text-danger">
+                            <small *ngIf="forms['lastname'].errors && forms['lastname'].errors?.['required']">
+                              Last Name is required
+                            </small>
+                            <small *ngIf="forms['lastname'].errors?.['minlength']">
+                              Last Name should have atleast 2 characters
+                            </small>
+                            <small *ngIf="forms['lastname'].errors?.['maxlength']">
+                              Last Name can have atmax 15 characters
+                            </small>
+                        </span>
+                    </div>
+                </div>
+      
+            <div class="row">
+              <div class="col-sm-12">
+                  <div class="form-group">
+                      <label>E-mail<span class="text-danger">*</span></label>
+                      <input type="email" formControlName="email" name="email" class="form-control" placeholder="E-mail" />
+                      <span *ngIf="submitted || forms['email'].invalid && forms['email'].dirty || forms['email'].touched" class="info-msg text-danger">
+                        <small *ngIf="forms['email'].errors && forms['email'].errors?.['required']">
+                          Email is required
+                        </small>
+                        <small *ngIf="forms['email'].errors?.['email']">
+                          Please provide a valid email
+                        </small>
+                    </span>
+                  </div>
+              </div>
+          </div>
+
+              <div class="row">
+                  <div class="col-sm-12">
+                      <div class="form-group">
+                          <label>Address<span class="text-danger">*</span></label>
+                          <input type="text" formControlName="address" class="form-control" placeholder="Address" />
+                          <span *ngIf="submitted || forms['address'].invalid && forms['address'].dirty || forms['address'].touched" class="info-msg text-danger">
+                            <small *ngIf="forms['address'].errors && forms['address'].errors?.['required']">
+                              Address is required
+                            </small>
+                            <small *ngIf="forms['address'].errors?.['minlength']">
+                              Address should have atleast 2 characters
+                            </small>
+                            <small *ngIf="forms['address'].errors?.['maxlength']">
+                              Address can have atmax 15 characters
+                            </small>
+                        </span>
+                      </div>
+                  </div>
+              </div>
+
+              <div class="row">
+                <div class="col-sm-12">
+                    <div class="form-group">
+                        <label>Password<span class="text-danger">*</span></label>
+                        <input type="password" formControlName="pass" name="pass" class="form-control" placeholder="Password" />
+                        <span *ngIf="submitted || forms['pass'].invalid && forms['pass'].dirty || forms['pass'].touched" class="info-msg text-danger">
+                          <small *ngIf="forms['pass'].errors && forms['pass'].errors?.['required']">
+                            Password is required
+                          </small>
+                          <small *ngIf="forms['pass'].errors?.['minlength']">
+                            Password should have atleast 2 characters
+                          </small>
+                          <small *ngIf="forms['pass'].errors?.['maxlength']">
+                            Password can have atmax 15 characters
+                          </small>
+                      </span>
+                    </div>
+                </div>
+            </div>
+
+              <div class="row">
+                  <div class="col-sm-12">
+                      <button class="btn btn-success" (click)="onSubmit(reactiveForm)" type="button">Submit Value</button>
+                      <!-- [disabled]="reactiveForm.invalid" -->
+                  </div>
+              </div>
+              </div>
+          </form>
+      </div>
+  </div>
+</div>

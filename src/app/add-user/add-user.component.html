@@ -1,0 +1,134 @@
+<div class="container mt-5">
+  <div class="row mb-3">
+    <div class="col-sm-12">
+      <h2>Add New User</h2>
+    </div>
+  </div>
+  <hr />
+  <div class="row">
+    <div class="col-sm-3">
+      <input type="checkbox" (change)="onChange($event.target)" name="singleUser" id="SingleUser" value="SINGLE_USER" />
+      SINGLE_USER
+    </div>
+    <div class="col-sm-3">
+      <input type="checkbox" (change)="onChange($event.target)" name="multiUser" id="multiUser" value="MULTIPLE_USER" />
+      MULTIPLE_USER
+    </div>
+  </div>
+  
+    <div class="row mb-3">
+        <div class="col-sm-12">
+            <form [formGroup]="userForm">
+                <div class="row">
+                    <div class="col-sm-12">
+                        <div class="form-group">
+                            <label>Full Name<span class="text-danger">*</span></label>
+                            <input type="text" formControlName="name" name="Name" class="form-control" placeholder="Full Name"/>
+                            <span *ngIf="submitted || forms['name'].invalid && forms['name'].dirty || forms['name'].touched" class="info-msg text-danger">
+                              <small *ngIf="forms['name'].errors && forms['name'].errors?.['required']">
+                                Full Name is required
+                              </small>
+                              <small *ngIf="forms['firstname'].errors?.['minlength']">
+                                Full Name should have atleast 2 characters
+                              </small>
+                              <small *ngIf="forms['firstname'].errors?.['maxlength']">
+                                Full Name can have atmax 15 characters
+                              </small>
+                          </span>
+                        </div>
+                    </div>
+                </div>
+  
+              <div class="row">
+                <div class="col-sm-12">
+                    <div class="form-group">
+                        <label>E-mail<span class="text-danger">*</span></label>
+                        <input type="email" formControlName="email" name="email" class="form-control" placeholder="E-mail" />
+                        <span *ngIf="submitted || forms['email'].invalid && forms['email'].dirty || forms['email'].touched" class="info-msg text-danger">
+                          <small *ngIf="forms['email'].errors && forms['email'].errors?.['required']">
+                            Email is required
+                          </small>
+                          <small *ngIf="forms['email'].errors?.['email']">
+                            Please provide a valid email
+                          </small>
+                      </span>
+                    </div>
+                </div>
+            </div>
+  
+                <div class="row">
+                    <div class="col-sm-12">
+                        <div class="form-group">
+                            <label>Address<span class="text-danger">*</span></label>
+                            <input type="text" formControlName="address" class="form-control" placeholder="Address" />
+                            <span *ngIf="submitted || forms['address'].invalid && forms['address'].dirty || forms['address'].touched" class="info-msg text-danger">
+                              <small *ngIf="forms['address'].errors && forms['address'].errors?.['required']">
+                                Address is required
+                              </small>
+                              <small *ngIf="forms['address'].errors?.['minlength']">
+                                Address should have atleast 2 characters
+                              </small>
+                              <small *ngIf="forms['address'].errors?.['maxlength']">
+                                Address can have atmax 15 characters
+                              </small>
+                          </span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                  <div class="col-sm-12">
+                    <div class="form-group">
+                      <ng-container formArrayName="contacts"  *ngFor="let data of getContactForm?.controls; let i = index">
+                        <div class="row mb-3" [formGroupName]="i">
+                          <div class="col-sm-6">
+                            <div class="form-group">
+                              <label>Contact Number: <span class="text-danger">*</span> </label>
+                              <input type="text" name="mobileNumber" id="mobileNumber" formControlName="mobileNumber" placeholder="Mobile Number" class="form-control" />
+                            </div>
+                          </div>
+              
+                          <div class="col-sm-6">
+                            <div class="form-group">
+                              <label>Contact Email: <span class="text-danger">*</span> </label>
+                              <input type="text" name="email" id="email" formControlName="email" placeholder="Contact Email" class="form-control" />
+                            </div>
+                          </div>
+                          <button class="badge badge-secondary col-sm-1" style="color: green; float: right;" (click)="deleteContactForm(i)" *ngIf="getContactForm.length > 1">Delete</button>
+                        </div>
+                      </ng-container>
+                    </div>
+                    <button class="badge badge-primary" style="color: green; float: right;" (click)="initContacts()">Add More</button>
+                  </div>
+                </div>
+
+
+              <div class="container mt-2">
+              <div class="row">
+                <div class="col-sm-6">
+                  <div class="form-group">
+                    <label>Date Of Birth</label>
+                    <input type="date" name="date" formControlName="dob" (change)="ageCalculator(dob)"/>
+                  </div>
+                </div>
+                <div class="col-sm-6">
+                  <div class="form-group">
+                    <label>Age</label>
+                    <input type="text" name="age" formControlName="age" readonly>
+                </div>
+              </div>
+              </div>     
+              
+             </div>
+
+                <div class="row">
+                    <div class="col-sm-12">
+                        <button class="btn btn-success" (click)="onSubmit(userForm.value)">Update Value</button>
+                        <button class="btn btn-primary" (click)="onBack()">Back</button>
+                    </div>
+                </div>
+
+            </form>
+        </div>
+    </div>
+  </div>

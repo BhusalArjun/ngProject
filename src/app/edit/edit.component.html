@@ -1,0 +1,137 @@
+<div class="container mt-5">
+  <div class="row">
+    <div class="col-sm-12">
+      <form [formGroup]="userForm">
+        <div class="row">
+          <div class="col-sm-12">
+            <div class="form-group">
+              <label>Full Name<span class="text-danger">*</span></label>
+              <input type="text" formControlName="name" name="Name" class="form-control" placeholder="First Name" />
+              <span *ngIf="submitted || forms['name'].invalid && forms['name'].dirty || forms['name'].touched"
+                class="info-msg text-danger">
+                <small *ngIf="forms['name'].errors && forms['name'].errors?.['required']">
+                  Full Name is required
+                </small>
+                <small *ngIf="forms['name'].errors?.['minlength']">
+                  Full Name should have atleast 2 characters
+                </small>
+                <small *ngIf="forms['name'].errors?.['maxlength']">
+                  Full Name can have atmax 15 characters
+                </small>
+              </span>
+            </div>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-sm-12">
+            <div class="form-group">
+              <label>E-mail<span class="text-danger">*</span></label>
+              <input type="email" formControlName="email" name="email" class="form-control" placeholder="E-mail" />
+              <span *ngIf="submitted || forms['email'].invalid && forms['email'].dirty || forms['email'].touched"
+                class="info-msg text-danger">
+                <small *ngIf="forms['email'].errors && forms['email'].errors?.['required']">
+                  Email is required
+                </small>
+                <small *ngIf="forms['email'].errors?.['email']">
+                  Please provide a valid email
+                </small>
+              </span>
+            </div>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-sm-12">
+            <div class="form-group">
+              <label>Address<span class="text-danger">*</span></label>
+              <input type="text" formControlName="address" class="form-control" placeholder="Address" />
+              <span *ngIf="submitted || forms['address'].invalid && forms['address'].dirty || forms['address'].touched"
+                class="info-msg text-danger">
+                <small *ngIf="forms['address'].errors && forms['address'].errors?.['required']">
+                  Address is required
+                </small>
+                <small *ngIf="forms['address'].errors?.['minlength']">
+                  Address should have atleast 2 characters
+                </small>
+                <small *ngIf="forms['address'].errors?.['maxlength']">
+                  Address can have atmax 15 characters
+                </small>
+              </span>
+            </div>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-sm-12">
+            <div class="form-group">
+              <label>Dob<span class="text-danger">*</span></label>
+              <input type="date" formControlName="dob" name="dob" class="form-control" placeholder="DOB" />
+              <span *ngIf="submitted || forms['dob'].invalid && forms['dob'].dirty || forms['dob'].touched"
+                class="info-msg text-danger">
+                <small *ngIf="forms['dob'].errors && forms['dob'].errors?.['required']">
+                  Date of Birth is required
+                </small>
+                <small *ngIf="forms['age'].errors?.['minlength']">
+                  Date of Birth should have atleast 2 characters
+                </small>
+              </span>
+            </div>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-sm-12">
+            <div class="form-group">
+              <ng-container formArrayName="contacts" *ngFor="let data of getContactForm?.controls; let i = index">
+                <div class="row mb-3" [formGroupName]="i">
+
+                  <input type="text" name="mobileNumber" id="mobileNumber" 
+                    formControlName="id"
+                    placeholder="Mobile Number" class="form-control" 
+                    hidden
+                    />
+
+                    <input type="text" name="mobileNumber" id="mobileNumber" 
+                    formControlName="user"
+                    placeholder="Mobile Number" class="form-control" 
+                    hidden
+                    />
+
+                  <div class="col-sm-6">
+                    <div class="form-group">
+                      <label>Contact Number: <span class="text-danger">*</span> </label>
+                      <input type="text" name="mobileNumber" id="mobileNumber" formControlName="mobileNumber"
+                        placeholder="Mobile Number" class="form-control" />
+                    </div>
+                  </div>
+
+                  <div class="col-sm-6">
+                    <div class="form-group">
+                      <label>Contact Email: <span class="text-danger">*</span> </label>
+                      <input type="text" name="email" id="email" formControlName="email" placeholder="Contact Email"
+                        class="form-control" />
+                    </div>
+                  </div>
+                  <button class="badge badge-secondary col-sm-1" style="color: green; float: right;"
+                    (click)="deleteContactForm(i)" *ngIf="getContactForm.length > 1">Delete</button>
+                </div>
+              </ng-container>
+              <button class="badge badge-primary" style="color: green; float: right;" (click)="initContacts()">Add
+                More</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-sm-12">
+            <button class="btn btn-success" (click)="onSubmit(userForm.value)">Update Value</button>
+            <!-- [disabled]="reactiveForm.invalid" -->
+            <button class="btn btn-primary" (click)="onBack()">Back</button>
+          </div>
+        </div>
+
+      </form>
+    </div>
+  </div>
+</div>
